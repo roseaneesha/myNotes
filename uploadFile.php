@@ -1,5 +1,9 @@
  <?php
     include 'db.php';
+    session_start();
+    if (!isset($_SESSION['session_id']) && !isset($_SESSION['loggedIn'])) {
+        header('location:loginForm.php');
+    }
 
     $driver = new mysqli_driver();
     mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);

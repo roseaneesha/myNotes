@@ -5,26 +5,32 @@ include 'db.php';
 $driver = new mysqli_driver();
 mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 if (isset($_POST['register'])) {
-    $regNum = mysqli_real_escape_string($db, strtolower($_POST['rollNo']));
-    $password = mysqli_real_escape_string($db, $_POST['password']);
-    $password2 = mysqli_real_escape_string($db, $_POST['passwordConfirm']);
-    $query = "SELECT regNumber FROM users WHERE regNumber='$regNum' ";
-    $sqlQuery = mysqli_query($db, $query);
-    if (mysqli_num_rows($sqlQuery)) {
-        echo 'user exists';
-        // exit('user exits');
-    } else {
-        try {
-            if ($password != $password2) {
-                echo 'incorrect password';
-            }
-            $hash = password_hash($password, PASSWORD_BCRYPT);
+    if (!empty($_POST['rollNo']) && !empty($_POST['password'])) {
+        $regNum = mysqli_real_escape_string($db, strtolower($_POST['rollNo']));
+        $password = mysqli_real_escape_string($db, $_POST['password']);
+        $password2 = mysqli_real_escape_string($db, $_POST['passwordConfirm']);
+        $query = "SELECT regNumber FROM users WHERE regNumber='$regNum' ";
+        $sqlQuery = mysqli_query($db, $query);
+        if (mysqli_num_rows($sqlQuery) != 0) {
+            echo 'user exists';
+            // exit('user exits');
+        } else {
+            try {
+                if ($password != $password2) {
+                    echo 'incorrect password';
+                }
+                $hash = password_hash($password, PASSWORD_BCRYPT);
 
-            $insertionQuery = "INSERT INTO users (regNumber,password) VALUES ('$regNum','$hash')";
-            $insertQuery = mysqli_query($db, $insertionQuery);
-            echo 'done';
-        } catch (mysqli_sql_exception $e) {
-            echo $e;
+                $insertionQuery = "INSERT INTO users (regNumber,password) VALUES ('$regNum','$hash')";
+                $insertQuery = mysqli_query($db, $insertionQuery);
+                if ($insertQuery) {
+                    echo "Successful Action";
+                } else {
+                    echo 'failure';
+                }
+            } catch (mysqli_sql_exception $e) {
+                echo $e;
+            }
         }
     }
 }

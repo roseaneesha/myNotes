@@ -5,21 +5,29 @@ include 'db.php';
 $driver = new mysqli_driver();
 mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 if (isset($_POST['login'])) {
-    $regNum = mysqli_real_escape_string($db, $_POST['rollNo']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
+    if (!empty($_POST['rollNo']) && !empty($_POST['password'])) {
+        $regNum = mysqli_real_escape_string($db, $_POST['rollNo']);
+        $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    $findUser = "SELECT * FROM users WHERE regNumber='$regNum'";
+        $findUser = "SELECT * FROM users WHERE regNumber='$regNum'";
 
-    $sqlQuery = mysqli_query($db, $findUser);
-    $result = mysqli_fetch_assoc($sqlQuery);
-    $dbPassword = $result['password'];
-    $verify = password_verify($password, $dbPassword);
+        $sqlQuery = mysqli_query($db, $findUser);
+        $result = mysqli_fetch_assoc($sqlQuery);
+        $dbPassword = $result['password'];
 
-    if ($verify) {
-        echo 'found u';
-        header("location: home.php");
-    } else {
-        echo 'wrong password';
+        $verify = password_verify($password, $dbPassword);
+
+
+        if ($verify) {
+            session_start();
+            $_SESSION['session_id'] = $regNum;
+            $_SESSION['loggedIn'] = true;
+
+            // echo 'found u';
+            header("location: home.php");
+        } else {
+            echo 'Invalid regNumber or password';
+        }
     }
 }
 ?>
