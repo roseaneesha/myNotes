@@ -1,0 +1,6 @@
+CREATE TABLE subject_uploads ( id INT NOT NULL AUTO_INCREMENT, 
+subCode VARCHAR(5), 
+subject VARCHAR(100),
+chapter VARCHAR(200), 
+date  DATE, 
+filePath VARCHAR(200));
