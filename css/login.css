@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body,
+html {
+    height: 100vh;
+}
+
+
+:root {
+    --bs-font-sans-serif: 'Karla', sans-serif;
+}
+
+section{
+    background-color: #eee;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #000;
+}
+
+.decor{
+    background-image: url('../assests/loginImage.jpg');
+    background-repeat: no-repeat;
+    background-size:center/cover;
+    
+}
+
+.circle{
+    /* color:#9794F0; */
+    background-color: #9794F0;
+    color:#fff;
+}

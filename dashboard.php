@@ -2,10 +2,13 @@
 <html lang="en">
 <?php
 include 'db.php';
-$query = 'SELECT * from subject_uploads';
+session_start();
+if (!isset($_SESSION['session_id']) && !isset($_SESSION['loggedIn'])) {
+    header('location:loginForm.php');
+}
+$user = $_SESSION['session_id'];
+$query = "SELECT * from subject_uploads WHERE userRollNumber='$user' ";
 $results = mysqli_query($db, $query);
-
-
 ?>
 
 
@@ -21,13 +24,22 @@ $results = mysqli_query($db, $query);
 
 <body>
     <div class="nav">
-        <a href="./loginForm.php">Log In</a>
-        <a href="./registrationForm.php">Register</a>
-        <a href="./loginForm.php">Upload Notes</a>
+        <?php
+        if ($_SESSION['loggedIn'] != true) { ?>
+            <a href="./loginForm.php">Log In</a>
+            <a href="./registrationForm.php">Register</a>
+        <?php } else { ?>
+            <a href="./upload.php">Upload File</a>
+            <a href="logout.php">Logout</a>
+        <?php } ?>
         <a href="#">About Us</a>
     </div>
 
+    <div>
+        <h2>Welcome, <?= $_SESSION['session_id']; ?>!
 
+        </h2>
+    </div>
     <h2>
         <?=
         // date_default_timezone_set("Asia/Kolkata");
@@ -51,7 +63,9 @@ $results = mysqli_query($db, $query);
                 <th scope="col">Subject</th>
                 <th scope="col">Chapter</th>
                 <th scope="col">View File</th>
-                <th scope="col">Download</th>
+                <th scope="col"></th>
+
+
 
 
 
@@ -78,12 +92,12 @@ $results = mysqli_query($db, $query);
 
                         </a>
                     </th>
+                    <!-- Delete the file -->
                     <th scope="row">
-                        <a download href="./<?= $row["filePath"] ?>">
-                            <i class="fas fa-download" style="user-select: auto;"></i>
-                        </a>
-
+                        <i class="fas fa-trash" style="user-select: auto;"></i>
                     </th>
+
+
 
 
 
