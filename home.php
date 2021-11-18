@@ -16,87 +16,104 @@ $results = mysqli_query($db, $query);
     <title>MyNotes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="./css/dashboard.css">
 </head>
 
 <body>
-    <div class="nav">
-        <a href="./loginForm.php">Log In</a>
-        <a href="./registrationForm.php">Register</a>
-        <a href="./loginForm.php">Upload Notes</a>
-        <a href="#">About Us</a>
-    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="./loginForm.php">Log In</a>
+                </li>
+                <li>
+                    <a href="./registrationForm.php">Register</a>
+                </li>
+                <li>
+                    <a href="./loginForm.php">Upload Notes</a>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                </li>
 
 
-    <h2>
-        <?=
-        // date_default_timezone_set("Asia/Kolkata");
-        date('h:i a');
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>
+            <?=
+            // date_default_timezone_set("Asia/Kolkata");
+            date('h:i a');
 
-        ?>
-    </h2>
-    <h4>
-        <?=
-        date('d/m/Y');
+            ?>
+        </h2>
+        <h4>
+            <?=
+            date('d/m/Y');
 
-        ?>
-    </h4>
+            ?>
+        </h4>
 
+        <div class="table-responsive">
+            <table class="table table-hover">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Subject Code</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Chapter</th>
-                <th scope="col">View File</th>
-                <th scope="col">Download</th>
+                <thead>
 
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Subject Code</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Chapter</th>
+                        <th scope="col">View File</th>
+                        <th scope="col">Download</th>
+                    </tr>
 
-
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <?php
-
-
-                while ($row = mysqli_fetch_assoc($results)) :
-                    // var_dump($row); //displays details about the variable
-                ?>
+                </thead>
 
 
-                    <th scope="row"><?= $row["date"] ?></th>
-                    <th scope="row"><?= $row["subCode"] ?></th>
-                    <th scope="row"><?= $row["subject"] ?></th>
-                    <th scope="row"><?= $row["chapter"] ?></th>
-                    <th scope="row">
-                        <a target="_blank" href="./<?= $row["filePath"] ?>">
-                            <i class="fas fa-book-open"></i>
-
-                        </a>
-                    </th>
-                    <th scope="row">
-                        <a download href="./<?= $row["filePath"] ?>">
-                            <i class="fas fa-download" style="user-select: auto;"></i>
-                        </a>
-
-                    </th>
+                <tbody>
+                    <tr>
+                        <?php
 
 
+                        while ($row = mysqli_fetch_assoc($results)) :
+                            // var_dump($row); //displays details about the variable
+                        ?>
 
 
-            </tr>
+                            <th scope="row"><?= $row["date"] ?></th>
+                            <th scope="row"><?= $row["subCode"] ?></th>
+                            <th scope="row"><?= $row["subject"] ?></th>
+                            <th scope="row"><?= $row["chapter"] ?></th>
+                            <th scope="row">
+                                <a target="_blank" href="./<?= $row["filePath"] ?>">
+                                    <i class="fas icon fa-book-open" style="color:#7047EB;"></i>
+
+                                </a>
+                            </th>
+                            <th scope="row">
+                                <a download href="./<?= $row["filePath"] ?>">
+                                    <i id="icon" class="fas fa-download" style="user-select: auto;"></i>
+                                </a>
+
+                            </th>
 
 
-        <?php endwhile; ?>
 
 
-        </tbody>
-    </table>
+                    </tr>
 
+
+                <?php endwhile; ?>
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </main>
 
 
 
