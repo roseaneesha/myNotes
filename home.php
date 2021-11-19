@@ -43,15 +43,14 @@ $results = mysqli_query($db, $query);
     </header>
     <main>
         <h2>
-            <?=
-            // date_default_timezone_set("Asia/Kolkata");
-            date('h:i a');
-
+            <?php
+            $dt = date_default_timezone_set("Asia/Kolkata");
+            echo date('h:i A');
             ?>
         </h2>
         <h4>
             <?=
-            date('d/m/Y');
+            date('M j, Y');
 
             ?>
         </h4>
@@ -89,13 +88,13 @@ $results = mysqli_query($db, $query);
                             <th scope="row"><?= $row["chapter"] ?></th>
                             <th scope="row">
                                 <a target="_blank" href="./<?= $row["filePath"] ?>">
-                                    <i class="fas icon fa-book-open" style="color:#7047EB;"></i>
+                                    <i class="fas  fa-book-open" style="color:#7047EB;"></i>
 
                                 </a>
                             </th>
                             <th scope="row">
                                 <a download href="./<?= $row["filePath"] ?>">
-                                    <i id="icon" class="fas fa-download" style="user-select: auto;"></i>
+                                    <i id="icon" class="fas fa-download" style="color:#7047EB;"></i>
                                 </a>
 
                             </th>

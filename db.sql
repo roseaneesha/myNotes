@@ -9,7 +9,7 @@ CREATE TABLE `my_notes`.`subject_uploads` (
     `subCode` VARCHAR(5) NOT NULL ,
     `subject` VARCHAR(100) NOT NULL ,
     `chapter` VARCHAR(100) NOT NULL , 
-    `date` DATE NOT NULL , 
+    `uploadedDate` VARCHAR(40) NOT NULL , 
     `regNumber` VARCHAR(10) NOT NULL ,
     `filePath` VARCHAR(255) NOT NULL ,
     PRIMARY KEY (`id`)) ENGINE = InnoDB;        

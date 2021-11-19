@@ -13,7 +13,7 @@
         $subCode = $_POST['subCode'];
         $subject = $_POST['sub'];
         $chapter = $_POST['chapter'];
-        $date = date('Y/m/d');
+        $date =  date('M j, Y');
         $user = $_SESSION['session_id'];
         $status = "";
         if (!empty($subCode) && !empty($subject) && !empty($chapter)) {
@@ -21,16 +21,13 @@
                 //file upload path
                 $targetDir = 'uploadedNotes/';
                 $fileName = basename($_FILES['fileToUpload']['name']);
-                echo $fileName;
-                // $getExtension= explode('.',$fileName);
-                // $extension= end($getExtension);
 
                 $targetFilePath = $targetDir . $fileName;
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
                 //allow certain file formats
 
-                $allowTypes = array('pdf', 'csv', 'doc', 'docx');
+                $allowTypes = array('pdf', 'jpg', 'jpeg', 'csv', 'doc', 'docx');
 
 
 
@@ -51,7 +48,7 @@
 
 
         echo $status;
-        $sql = "INSERT INTO  subject_uploads (subCode,subject,chapter,date,filePath,regNumber) VALUES ('$subCode', '$subject' ,'$chapter', '$date', '$targetFilePath','$user')";
+        $sql = "INSERT INTO  subject_uploads (subCode,subject,chapter,uploadedDate,filePath,regNumber) VALUES ('$subCode', '$subject' ,'$chapter', '$date', '$targetFilePath','$user')";
         $query = mysqli_query($db, $sql);
     }
     if ($_SESSION['loggedIn']) {
