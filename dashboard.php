@@ -7,7 +7,9 @@ if (!isset($_SESSION['session_id']) && !isset($_SESSION['loggedIn'])) {
     header('location:loginForm.php');
 }
 $user = $_SESSION['session_id'];
-$query = "SELECT * from subject_uploads WHERE userRollNumber='$user' ";
+// echo $user;
+$query = "SELECT * from subject_uploads WHERE regNumber='$user' ";
+
 $results = mysqli_query($db, $query);
 ?>
 
@@ -63,7 +65,7 @@ $results = mysqli_query($db, $query);
                 <th scope="col">Subject</th>
                 <th scope="col">Chapter</th>
                 <th scope="col">View File</th>
-                <th scope="col"></th>
+                <th scope="col">Delete</th>
 
 
 

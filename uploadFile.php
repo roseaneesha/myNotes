@@ -14,6 +14,7 @@
         $subject = $_POST['sub'];
         $chapter = $_POST['chapter'];
         $date = date('Y/m/d');
+        $user = $_SESSION['session_id'];
         $status = "";
         if (!empty($subCode) && !empty($subject) && !empty($chapter)) {
             if (!empty($_FILES['fileToUpload']['name'])) { //stores the original filename from client side
@@ -50,7 +51,7 @@
 
 
         echo $status;
-        $sql = "INSERT INTO  subject_uploads (subCode,subject,chapter,date,filePath) VALUES ('$subCode', '$subject' ,'$chapter', '$date', '$targetFilePath')";
+        $sql = "INSERT INTO  subject_uploads (subCode,subject,chapter,date,filePath,regNumber) VALUES ('$subCode', '$subject' ,'$chapter', '$date', '$targetFilePath','$user')";
         $query = mysqli_query($db, $sql);
     }
     if ($_SESSION['loggedIn']) {
