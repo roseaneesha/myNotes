@@ -62,7 +62,7 @@ $results = mysqli_query($db, $query);
 
     <main>
         <div>
-            <h2 class='welcome text-center p-2'>Welcome, <?= $_SESSION['session_id']; ?>!
+            <h2 class='welcome text-center p-2'>Welcome <?= $_SESSION['session_id']; ?>!
 
             </h2>
         </div>
@@ -140,22 +140,22 @@ $results = mysqli_query($db, $query);
                             ?>
 
 
-                                <th scope="row"><?= $row["date"] ?></th>
-                                <th scope="row"><?= $row["subCode"] ?></th>
-                                <th scope="row"><?= $row["subject"] ?></th>
-                                <th scope="row"><?= $row["chapter"] ?></th>
-                                <th scope="row">
+                                <td scope="row"><?= $row["date"] ?></td>
+                                <td scope="row"><?= $row["subCode"] ?></td>
+                                <td scope="row"><?= $row["subject"] ?></td>
+                                <td scope="row"><?= $row["chapter"] ?></td>
+                                <td scope="row">
                                     <a target="_blank" href="./<?= $row["filePath"] ?>">
-                                        <i class="fas icon fa-book-open" style="color:#7047EB;"></i>
+                                        <i class="fas fa-book-open"></i>
 
                                     </a>
-                                </th>
+                                    </th>
+
                                 <th scope="row">
 
-                                    <i class="fas fa-trash" style="color:#7047EB;"></i> </a>
+                                <td><a href="deleteFile.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash" style="user-select: auto;"></i></a></td>
 
                                 </th>
-
 
 
 

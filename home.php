@@ -42,18 +42,23 @@ $results = mysqli_query($db, $query);
         </nav>
     </header>
     <main>
-        <h2>
+
+        <h2 class='text-center pt-3 px-3 time'>
+
             <?php
             $dt = date_default_timezone_set("Asia/Kolkata");
             echo date('h:i A');
             ?>
-        </h2>
-        <h4>
-            <?=
-            date('M j, Y');
 
-            ?>
-        </h4>
+        </h2>
+        <div class="date mx-auto">
+            <h4 class='text-center pt-1'>
+                <?=
+                date('M j, Y');
+
+                ?>
+            </h4>
+        </div>
 
         <div class="table-responsive">
             <table class="table table-hover">
@@ -62,10 +67,10 @@ $results = mysqli_query($db, $query);
 
                     <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Subject Code</th>
+                        <th scope="col">Code</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Chapter</th>
-                        <th scope="col">View File</th>
+                        <th scope="col">File</th>
                         <th scope="col">Download</th>
                     </tr>
 
@@ -82,7 +87,7 @@ $results = mysqli_query($db, $query);
                         ?>
 
 
-                            <th scope="row"><?= $row["date"] ?></th>
+                            <th scope="row"><?= $row["uploadedDate"] ?></th>
                             <th scope="row"><?= $row["subCode"] ?></th>
                             <th scope="row"><?= $row["subject"] ?></th>
                             <th scope="row"><?= $row["chapter"] ?></th>
