@@ -7,7 +7,9 @@ if (!isset($_SESSION['session_id']) && !isset($_SESSION['loggedIn'])) {
     header('location:loginForm.php');
 }
 $user = $_SESSION['session_id'];
+// echo $user;
 $query = "SELECT * from subject_uploads WHERE regNumber='$user' ";
+
 $results = mysqli_query($db, $query);
 ?>
 
@@ -17,69 +19,125 @@ $results = mysqli_query($db, $query);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyNotes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="./css/dashboard.css">
 </head>
 
 <body>
-    <div class="nav">
-        <?php
-        if ($_SESSION['loggedIn'] != true) { ?>
-            <a href="./loginForm.php">Log In</a>
-            <a href="./registrationForm.php">Register</a>
-        <?php } else { ?>
-            <a href="./upload.php">Upload File</a>
-            <a href="logout.php">Logout</a>
-        <?php } ?>
-        <a href="#">About Us</a>
-    </div>
 
-    <div>
-        <h2>Welcome, <?= $_SESSION['session_id']; ?>!
-
-        </h2>
-    </div>
-    <h2>
-        <?=
-        // date_default_timezone_set("Asia/Kolkata");
-        date('h:i a');
-
-        ?>
-    </h2>
-    <h4>
-        <?=
-        date('d/m/Y');
-
-        ?>
-    </h4>
-
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Subject Code</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Chapter</th>
-                <th scope="col">View File</th>
-                <th scope="col"></th>
-
-
-
-
-
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
+    <header>
+        <nav>
+            <ul>
                 <?php
 
 
-                while ($row = mysqli_fetch_assoc($results)) :
-                    // var_dump($row); //displays details about the variable
+                if ($_SESSION['loggedIn'] != true) { ?>
+                    <li>
+                        <a href="./loginForm.php">Log In</a>
+                    </li>
+                    <li>
+                        <a href="./registrationForm.php">Register</a>
+                    </li>
+                <?php } else { ?>
+                    <li>
+
+                        <a href="./upload.php">Upload File</a>
+                    </li>
+                    <li>
+                        <a href="logout.php">Logout</a>
+                    </li>
+                <?php } ?>
+                <li>
+                    <a href="#">About Us</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main>
+        <div>
+            <h2 class='welcome text-center p-2'>Welcome <?= $_SESSION['session_id']; ?>!
+
+            </h2>
+        </div>
+
+
+        <h2 class='text-center pt-3 px-3 time'>
+
+            <?php
+            $dt = date_default_timezone_set("Asia/Kolkata");
+            echo date('h:i A');
+            ?>
+
+        </h2>
+        <div class="date mx-auto">
+            <h4 class='text-center pt-1'>
+                <?=
+                date('M j, Y');
+
                 ?>
+            </h4>
+        </div>
+
+
+
+        <?php
+        if (mysqli_num_rows($results) == 0) { ?>
+            <div class="table-responsive p-3">
+                <table class="table table-borderless">
+                    <thead>
+
+                        <tr>
+                            <th scope=" col">DATE</th>
+                            <th scope="col">CODE</th>
+                            <th scope="col">SUBJECT</th>
+                            <th scope="col">CHAPTER</th>
+                            <th scope="col">VIEW</th>
+                            <th scope="col">DELETE</th>
+                        </tr>
+
+                    </thead>
+                </table>
+            </div>
+
+
+
+            <h3 class='empty text-center p-3'>Oops, No uploads yet!</h3>
+
+            </div>
+        <?php } else { ?>
+
+            <div class="table-responsive p-3">
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Chapter</th>
+                            <th scope="col">View</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+                        <tr>
+
+                            <?php
+                            while ($row = mysqli_fetch_assoc($results)) :
+
+                                // var_dump($row); //displays details about the variable
+                            ?>
 
 
                     <td scope="row"><?= $row["date"] ?></td>
@@ -92,7 +150,7 @@ $results = mysqli_query($db, $query);
 
                         </a>
                     </th>
-                    <!-- Delete the file -->
+
                     <th scope="row"> 
     
                     <td><a href="deleteFile.php?id=<?php echo $row['id'];?>"><i class="fas fa-trash" style="user-select: auto;"></i></a></td>
@@ -101,20 +159,18 @@ $results = mysqli_query($db, $query);
 
 
 
+                        </tr>
 
 
-
-            </tr>
-
-
-        <?php endwhile; ?>
+                <?php endwhile;
+                        } ?>
 
 
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
 
-
-
+            </div>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
