@@ -7,9 +7,7 @@ if (!isset($_SESSION['session_id']) && !isset($_SESSION['loggedIn'])) {
     header('location:loginForm.php');
 }
 $user = $_SESSION['session_id'];
-// echo $user;
 $query = "SELECT * from subject_uploads WHERE regNumber='$user' ";
-
 $results = mysqli_query($db, $query);
 ?>
 
@@ -65,7 +63,7 @@ $results = mysqli_query($db, $query);
                 <th scope="col">Subject</th>
                 <th scope="col">Chapter</th>
                 <th scope="col">View File</th>
-                <th scope="col">Delete</th>
+                <th scope="col"></th>
 
 
 
@@ -84,19 +82,21 @@ $results = mysqli_query($db, $query);
                 ?>
 
 
-                    <th scope="row"><?= $row["date"] ?></th>
-                    <th scope="row"><?= $row["subCode"] ?></th>
-                    <th scope="row"><?= $row["subject"] ?></th>
-                    <th scope="row"><?= $row["chapter"] ?></th>
-                    <th scope="row">
+                    <td scope="row"><?= $row["date"] ?></td>
+                    <td scope="row"><?= $row["subCode"] ?></td>
+                    <td scope="row"><?= $row["subject"] ?></td>
+                    <td scope="row"><?= $row["chapter"] ?></td>
+                    <td scope="row">
                         <a target="_blank" href="./<?= $row["filePath"] ?>">
                             <i class="fas fa-book-open"></i>
 
                         </a>
                     </th>
                     <!-- Delete the file -->
-                    <th scope="row">
-                        <i class="fas fa-trash" style="user-select: auto;"></i>
+                    <th scope="row"> 
+    
+                    <td><a href="deleteFile.php?id=<?php echo $row['id'];?>"><i class="fas fa-trash" style="user-select: auto;"></i></a></td>
+            
                     </th>
 
 
