@@ -157,6 +157,11 @@ $results = mysqli_query($db, $query);
 
                                 </th>
 
+                                <th scope="row">
+
+                                <td><a href="deleteFile.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash" style="user-select: auto;"></i></a></td>
+
+                                </th>
 
 
                         </tr>
