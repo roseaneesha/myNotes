@@ -45,6 +45,18 @@
                     <input type="text" name='chapter' class="form-control" id="chapName" aria-describedby="chapterName" placeholder="Enter Chapter Name">
                 </div>
                 <div class="form-group">
+                    <label for="branch">Branch:</label>
+                    <select name='branch' id="branch" class="form-select required" aria-label="Default select example">
+                        <option selected>Select the branch:</option>
+                        <option value="CS">CS</option>
+                        <option value="EC">EC</option>
+                        <option value="EE">EE</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CIVIL">CIVIL</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="fileToUpload">Upload Notes</label>
                     <input type="file" class="form-control-file" id="fileToUpload" size='' name='fileToUpload'>
                     <input type="hidden" name='submitted' value='1' />

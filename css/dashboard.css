@@ -70,13 +70,17 @@ header {
     color: #fff;
 }
 
+nav{
+    margin:10px 0 0;
+}
+
 header nav ul {
     display: flex;
     
 }
 
 header nav li {
-    margin: 0 15px;
+    margin: 10px  15px 0;
     white-space: nowrap;
 
 }
@@ -153,7 +157,11 @@ main{
 header nav li {
     margin: 0 15px;
     white-space: nowrap;
+<<<<<<< HEAD
     font-size: 1.2vw;
+=======
+    font-size: 15px;
+>>>>>>> d5d3f41c5ce3dd77d82c97cb89a710e230219a8e
 
 }
 
@@ -181,3 +189,11 @@ button{
 
 
 
+
+@media (max-width:500px) {
+header nav  {
+    margin:auto;
+}
+
+
+}

@@ -36,8 +36,6 @@ $results = mysqli_query($db, $query);
                 <li>
                     <a href="#">About Us</a>
                 </li>
-
-
             </ul>
         </nav>
     </header>
