@@ -13,6 +13,7 @@
         $subCode = $_POST['subCode'];
         $subject = $_POST['sub'];
         $chapter = $_POST['chapter'];
+        $branch = $_POST['branch'];
         $date =  date('M j, Y');
         $user = $_SESSION['session_id'];
         $status = "";
@@ -48,7 +49,7 @@
 
 
         echo $status;
-        $sql = "INSERT INTO  subject_uploads (subCode,subject,chapter,uploadedDate,filePath,regNumber) VALUES ('$subCode', '$subject' ,'$chapter', '$date', '$targetFilePath','$user')";
+        $sql = "INSERT INTO  subject_uploads (subCode,subject,chapter,uploadedDate,filePath,regNumber,branchName) VALUES ('$subCode', '$subject' ,'$chapter', '$date', '$targetFilePath','$user','$branch')";
         $query = mysqli_query($db, $sql);
     }
     if ($_SESSION['loggedIn']) {

@@ -70,13 +70,17 @@ header {
     color: #fff;
 }
 
+nav{
+    margin:10px 0 0;
+}
+
 header nav ul {
     display: flex;
     
 }
 
 header nav li {
-    margin: 0 15px;
+    margin: 10px  15px 0;
     white-space: nowrap;
 
 }
@@ -153,7 +157,7 @@ main{
 header nav li {
     margin: 0 15px;
     white-space: nowrap;
-    font-size: smaller;
+    font-size: 15px;
 
 }
 
@@ -163,3 +167,11 @@ header nav li {
     color:gray;
 }
 
+
+@media (max-width:500px) {
+header nav  {
+    margin:auto;
+}
+
+
+}
