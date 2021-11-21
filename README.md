@@ -10,11 +10,4 @@ A Notes uploading web app
                         <a target="_blank" href="./<?= $row["filePath"] ?>">
                             <i class="fas fa-book-open"></i>
 
-                        </a>
-                    </th>
-                    <!-- Delete the file -->
-                    <th scope="row"> 
-    
-                    <td><a href="deleteFile.php?id=<?php echo $row['id'];?>"><i class="fas fa-trash" style="user-select: auto;"></i></a></td>
-            
-                    </th>
+                    
