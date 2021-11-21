@@ -135,7 +135,16 @@ main{
     
     
 }
+.delete{
+    color:#F7F7F9;
+    padding:20px 40px 0;
 
+
+}
+.delete:hover{
+    color:#EEE;
+
+}
 @media (max-width:1000px) {
     header {
       
@@ -157,11 +166,7 @@ main{
 header nav li {
     margin: 0 15px;
     white-space: nowrap;
-<<<<<<< HEAD
-    font-size: 1.2vw;
-=======
     font-size: 15px;
->>>>>>> d5d3f41c5ce3dd77d82c97cb89a710e230219a8e
 
 }
 
@@ -169,22 +174,6 @@ header nav li {
    
     /* font-size: 4vw; */
     color:gray;
-}
-button{
-
-    background-color: #7047eb;
-    font-size: 1.0vw;
-    border-radius: 10px;
-    border: 4px double #cccccc;
-    color: #eeeeee;
-    text-align: center;
-    padding: 10px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-    position: absolute;
-    right: 100px;
-    bottom: 150px;
 }
 
 

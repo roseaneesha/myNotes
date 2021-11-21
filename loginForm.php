@@ -26,7 +26,11 @@ if (isset($_POST['login'])) {
             // echo 'found u';
             header("location: dashboard.php");
         } else {
-            echo 'Invalid regNumber or password';
+          
+            echo '<script type="text/javascript">';
+            echo ' alert("Invalid credentials")';  //not showing an alert box.
+            echo '</script>';
+        
         }
     }
 }

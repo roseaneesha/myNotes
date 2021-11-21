@@ -34,19 +34,19 @@
             <form class="flex-form" method="post" action="uploadFile.php" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="subCode">Subject Code</label>
-                    <input type="text" name='subCode' class="form-control" id="subCode" aria-describedby="subjectCode" placeholder="Enter Subject Code">
+                    <input required type="text" name='subCode' class="form-control" id="subCode" aria-describedby="subjectCode" placeholder="Enter Subject Code">
                 </div>
                 <div class="form-group">
                     <label for="sub">Subject</label>
-                    <input type="text" name='sub' class="form-control" id="sub" aria-describedby="subject" placeholder="Enter Subject Name">
+                    <input required type="text" name='sub' class="form-control" id="sub" aria-describedby="subject" placeholder="Enter Subject Name">
                 </div>
                 <div class="form-group">
                     <label for="chapName">Chapter</label>
-                    <input type="text" name='chapter' class="form-control" id="chapName" aria-describedby="chapterName" placeholder="Enter Chapter Name">
+                    <input required type="text" name='chapter' class="form-control" id="chapName" aria-describedby="chapterName" placeholder="Enter Chapter Name">
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch:</label>
-                    <select name='branch' id="branch" class="form-select required" aria-label="Default select example">
+                    <select required name='branch' id="branch" class="form-select required" aria-label="Default select example">
                         <option selected>Select the branch:</option>
                         <option value="CS">CS</option>
                         <option value="EC">EC</option>
@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <label for="fileToUpload">Upload Notes</label>
-                    <input type="file" class="form-control-file" id="fileToUpload" size='' name='fileToUpload'>
+                    <input required type="file" class="form-control-file" id="fileToUpload" size='' name='fileToUpload'>
                     <input type="hidden" name='submitted' value='1' />
                 </div>
                 <button type="submit" name="send" class="btn btn-outline-light">Submit</button>
