@@ -16,6 +16,7 @@
         $branch = $_POST['branch'];
         $date =  date('M j, Y');
         $user = $_SESSION['session_id'];
+
         $status = "";
         if (!empty($subCode) && !empty($subject) && !empty($chapter)) {
             if (!empty($_FILES['fileToUpload']['name'])) { //stores the original filename from client side
@@ -37,13 +38,21 @@
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFilePath)) {
                         $status = "The file " . $fileName . " has been uploaded.";
                     } else {
-                        $status = "Sorry, there was an error uploading your file.";
+
+                        echo '<script type="text/javascript">';
+                        echo ' alert("Error while uploading file")';  //not showing an alert box.
+                        echo '</script>';
                     }
                 } else {
-                    $status = 'Sorry PDF files are allowed to upload.';
+                    echo '<script type="text/javascript">';
+                    echo ' alert("Check the file type")';  //not showing an alert box.
+                    echo '</script>';
                 }
             } else {
-                echo 'enter all fields';
+
+                echo '<script type="text/javascript">';
+                echo ' alert("Enter all fields")';  //not showing an alert box.
+                echo '</script>';
             }
         }
 

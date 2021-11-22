@@ -12,25 +12,32 @@ if (isset($_POST['register'])) {
         $query = "SELECT regNumber FROM users WHERE regNumber='$regNum' ";
         $sqlQuery = mysqli_query($db, $query);
         if (mysqli_num_rows($sqlQuery) != 0) {
-            echo 'user exists';
-            // exit('user exits');
-        } else {
-            try {
-                if ($password != $password2) {
-                    echo 'incorrect password';
-                }
-                $hash = password_hash($password, PASSWORD_BCRYPT);
 
-                $insertionQuery = "INSERT INTO users (regNumber,password) VALUES ('$regNum','$hash')";
-                $insertQuery = mysqli_query($db, $insertionQuery);
-                if ($insertQuery) {
-                    echo "Successful Action";
-                    header('location:dashboard.php');
-                } else {
-                    echo 'failure';
-                }
-            } catch (mysqli_sql_exception $e) {
-                echo $e;
+            echo '<script type="text/javascript">';
+            echo ' alert("Account Already exists")';  //not showing an alert box.
+            echo '</script>';
+        } else {
+
+            if ($password != $password2) {
+
+                echo '<script type="text/javascript">';
+                echo ' alert("Passwords does not match")';  //not showing an alert box.
+                echo '</script>';
+            }
+
+
+            $hash = password_hash($password, PASSWORD_BCRYPT);
+
+            $insertionQuery = "INSERT INTO users (regNumber,password) VALUES ('$regNum','$hash')";
+            $insertQuery = mysqli_query($db, $insertionQuery);
+            if ($insertQuery) {
+                // echo "Successful Action";
+                header('location:dashboard.php');
+            } else {
+
+                echo '<script type="text/javascript">';
+                echo ' alert("Oops, Something went wrong")';  //not showing an alert box.
+                echo '</script>';
             }
         }
     }

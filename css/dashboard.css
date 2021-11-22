@@ -135,7 +135,16 @@ main{
     
     
 }
+.delete{
+    color:#F7F7F9;
+    padding:20px 40px 0;
 
+
+}
+.delete:hover{
+    color:#EEE;
+
+}
 @media (max-width:1000px) {
     header {
       
@@ -166,6 +175,8 @@ header nav li {
     /* font-size: 4vw; */
     color:gray;
 }
+
+
 
 
 @media (max-width:500px) {

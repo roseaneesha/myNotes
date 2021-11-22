@@ -1,2 +1,5 @@
 # myNotes
-A Notes uploading web app
+A Notes uploading web app for NITPY students 
+
+
+                    

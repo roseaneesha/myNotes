@@ -1,14 +1,19 @@
 <?php
 
-include 'db.php';
-
-try {
+ include 'db.php';
+ 
+ try{
     $id = $_GET['id'];
-    $sqlQuery = "DELETE FROM users WHERE regNumber='$id' ";
-    if (mysqli_query($db, $sqlQuery)) {
+    $sqlQuery = "DELETE FROM users WHERE regNumber='$id'; ";
 
-        header("location: logout.php");
+    if( mysqli_query($db, $sqlQuery)){
+       
+       
+        header("location:home.php");
     }
-} catch (mysqli_sql_exception $e) {
-    echo $e;
-}
+   
+   
+
+ }catch(mysqli_sql_exception $e){
+     echo $e;
+ }
