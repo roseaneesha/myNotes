@@ -2,14 +2,15 @@
 <html lang="en">
 <?php
 include 'db.php';
-$driver = new mysqli_driver();
-mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
+// $driver = new mysqli_driver();
+error_reporting(E_ERROR | E_PARSE);
+// mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 if (isset($_POST['register'])) {
     if (!empty($_POST['rollNo']) && !empty($_POST['password'])) {
         $regNum = mysqli_real_escape_string($db, strtolower($_POST['rollNo']));
         $password = mysqli_real_escape_string($db, $_POST['password']);
         $password2 = mysqli_real_escape_string($db, $_POST['passwordConfirm']);
-        $query = "SELECT regNumber FROM users WHERE regNumber='$regNum' ";
+        $query = "SELECT regNumber FROM users WHERE regNumber='$regNum' "; //check if the user exists
         $sqlQuery = mysqli_query($db, $query);
         if (mysqli_num_rows($sqlQuery) != 0) {
 

@@ -34,7 +34,7 @@ $results = mysqli_query($db, $query);
                     <a href="./loginForm.php">Upload Notes</a>
                 </li>
                 <li>
-                    <a href="#">About Us</a>
+                    <a href="./about.html">About Us</a>
                 </li>
             </ul>
         </nav>
@@ -57,64 +57,90 @@ $results = mysqli_query($db, $query);
                 ?>
             </h4>
         </div>
+        <?php
+        if (mysqli_num_rows($results) == 0) { ?>
+            <div class="table-responsive p-3">
+                <table class="table table-borderless">
+                    <thead>
 
-        <div class="table-responsive">
-            <table class="table table-hover">
+                        <tr>
+                            <th scope=" col">DATE</th>
+                            <th scope="col">CODE</th>
+                            <th scope="col">SUBJECT</th>
+                            <th scope="col">CHAPTER</th>
+                            <th scope="col">VIEW</th>
+                            <th scope="col">DELETE</th>
+                        </tr>
 
-                <thead>
-
-                    <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Chapter</th>
-                        <th scope="col">File</th>
-                        <th scope="col">Download</th>
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-                    <tr>
-                        <?php
-
-
-                        while ($row = mysqli_fetch_assoc($results)) :
-                            // var_dump($row); //displays details about the variable
-                        ?>
-
-
-                            <th scope="row"><?= $row["uploadedDate"] ?></th>
-                            <th scope="row"><?= $row["subCode"] ?></th>
-                            <th scope="row"><?= $row["subject"] ?></th>
-                            <th scope="row"><?= $row["chapter"] ?></th>
-                            <th scope="row">
-                                <a target="_blank" href="./<?= $row["filePath"] ?>">
-                                    <i class="fas  fa-book-open" style="color:#7047EB;"></i>
-
-                                </a>
-                            </th>
-                            <th scope="row">
-                                <a download href="./<?= $row["filePath"] ?>">
-                                    <i id="icon" class="fas fa-download" style="color:#7047EB;"></i>
-                                </a>
-
-                            </th>
+                    </thead>
+                </table>
+            </div>
 
 
 
+            <h3 class='empty text-center p-3'>Oops, No uploads yet!</h3>
 
-                    </tr>
+            </div>
+        <?php } else { ?>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Chapter</th>
+                            <th scope="col">File</th>
+                            <th scope="col">Download</th>
+                        </tr>
+
+                    </thead>
 
 
-                <?php endwhile; ?>
+                    <tbody>
+                        <tr>
+                            <?php
 
 
-                </tbody>
-            </table>
+                            while ($row = mysqli_fetch_assoc($results)) :
+                                // var_dump($row); //displays details about the variable
+                            ?>
 
-        </div>
+
+                                <th scope="row"><?= $row["uploadedDate"] ?></th>
+                                <th scope="row"><?= $row["subCode"] ?></th>
+                                <th scope="row"><?= $row["subject"] ?></th>
+                                <th scope="row"><?= $row["chapter"] ?></th>
+                                <th scope="row">
+                                    <a target="_blank" href="./<?= $row["filePath"] ?>">
+                                        <i class="fas fa-book-open" style="color:#7047EB"></i>
+
+                                    </a>
+                                </th>
+                                <th scope="row">
+                                    <a download href="./<?= $row["filePath"] ?>">
+                                        <i id="icon" class="fas fa-download" style="color:#7047EB;"></i>
+                                    </a>
+
+                                </th>
+
+
+
+
+                        </tr>
+
+
+                <?php endwhile;
+                        } ?>
+
+
+                    </tbody>
+                </table>
+
+            </div>
     </main>
 
 

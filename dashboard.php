@@ -52,7 +52,7 @@ $results = mysqli_query($db, $query);
                     </li>
                 <?php } ?>
                 <li>
-                    <a href="#">About Us</a>
+                    <a href="./about.html">About Us</a>
                 </li>
             </ul>
         </nav>

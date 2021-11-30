@@ -2,8 +2,9 @@
 <html lang="en">
 <?php
 include 'db.php';
-$driver = new mysqli_driver();
-mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
+error_reporting(E_ERROR | E_PARSE);
+// $driver = new mysqli_driver();
+// mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 if (isset($_POST['login'])) {
     if (!empty($_POST['rollNo']) && !empty($_POST['password'])) {
         $regNum = mysqli_real_escape_string($db, $_POST['rollNo']);
@@ -13,6 +14,11 @@ if (isset($_POST['login'])) {
 
         $sqlQuery = mysqli_query($db, $findUser);
         $result = mysqli_fetch_assoc($sqlQuery);
+        if ($result == false) {
+            echo '<script type="text/javascript">';
+            echo ' alert("User not registered")';  //not showing an alert box.
+            echo '</script>';
+        }
         $dbPassword = $result['password'];
 
         $verify = password_verify($password, $dbPassword);
@@ -26,11 +32,10 @@ if (isset($_POST['login'])) {
             // echo 'found u';
             header("location: dashboard.php");
         } else {
-          
+
             echo '<script type="text/javascript">';
             echo ' alert("Invalid credentials")';  //not showing an alert box.
             echo '</script>';
-        
         }
     }
 }
