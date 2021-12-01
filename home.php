@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 include 'db.php';
-$query = 'SELECT * from subject_uploads';
+$query = 'SELECT * from subject_uploads ORDER BY uploadTimetamp DESC ';
 $results = mysqli_query($db, $query);
 
 
@@ -34,7 +34,7 @@ $results = mysqli_query($db, $query);
                     <a href="./loginForm.php">Upload Notes</a>
                 </li>
                 <li>
-                    <a href="./about.html">About Us</a>
+                    <a href="./about.php">About Us</a>
                 </li>
             </ul>
         </nav>
@@ -64,7 +64,7 @@ $results = mysqli_query($db, $query);
                     <thead>
 
                         <tr>
-                            <th scope=" col">DATE</th>
+                            <th scope="col">DATE</th>
                             <th scope="col">CODE</th>
                             <th scope="col">SUBJECT</th>
                             <th scope="col">CHAPTER</th>
@@ -89,12 +89,12 @@ $results = mysqli_query($db, $query);
                     <thead>
 
                         <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Code</th>
-                            <th scope="col">Subject</th>
-                            <th scope="col">Chapter</th>
-                            <th scope="col">File</th>
-                            <th scope="col">Download</th>
+                            <th scope="col">DATE</th>
+                            <th scope="col">CODE</th>
+                            <th scope="col">SUBJECT</th>
+                            <th scope="col">CHAPTER</th>
+                            <th scope="col">VIEW</th>
+                            <th scope="col">DELETE</th>
                         </tr>
 
                     </thead>

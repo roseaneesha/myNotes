@@ -3,8 +3,8 @@
 <?php
 include 'db.php';
 // $driver = new mysqli_driver();
-error_reporting(E_ERROR | E_PARSE);
 // mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
+error_reporting(E_ERROR | E_PARSE);
 if (isset($_POST['register'])) {
     if (!empty($_POST['rollNo']) && !empty($_POST['password'])) {
         $regNum = mysqli_real_escape_string($db, strtolower($_POST['rollNo']));

@@ -8,7 +8,7 @@ if (!isset($_SESSION['session_id']) && !isset($_SESSION['loggedIn'])) {
 }
 $user = $_SESSION['session_id'];
 // echo $user;
-$query = "SELECT * from subject_uploads WHERE regNumber='$user' ";
+$query = "SELECT * from subject_uploads WHERE regNumber='$user' ORDER BY uploadTimetamp DESC ";
 
 $results = mysqli_query($db, $query);
 ?>
@@ -32,6 +32,9 @@ $results = mysqli_query($db, $query);
     <header>
         <nav>
             <ul>
+                <li>
+                    <a href="./about.php">About Us</a>
+                </li>
                 <?php
 
 
@@ -51,9 +54,7 @@ $results = mysqli_query($db, $query);
                         <a href="logout.php">Logout</a>
                     </li>
                 <?php } ?>
-                <li>
-                    <a href="./about.html">About Us</a>
-                </li>
+
             </ul>
         </nav>
     </header>
@@ -124,6 +125,7 @@ $results = mysqli_query($db, $query);
                             <th scope="col">Subject</th>
                             <th scope="col">Chapter</th>
                             <th scope="col">View</th>
+                            <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
 
@@ -151,7 +153,7 @@ $results = mysqli_query($db, $query);
                                     </a>
                                 </td>
 
-
+                                <td><a href="updateForm.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit" style="color:#7047EB"></i></a></td>
 
                                 <td><a href="deleteFile.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash" style="color:#7047EB"></i></a></td>
 

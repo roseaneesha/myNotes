@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+::-webkit-input-placeholder {
+    color: #56585b;
+}
+
+::-moz-placeholder {
+    color: #56585b;
+}
+
+:-moz-placeholder {
+    color: #56585b;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #7047EB;
+    margin: 0;
+    overflow-y: hidden;
+
+}
+
+ul,
+nav {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #7047EB;
+    margin: 0 0 1.5rem;
+}
+
+i {
+    font-size: 1.3rem;
+}
+
+header {
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+}
+
+nav {
+    margin: 5px 30px 0;
+}
+
+header nav ul {
+    display: flex;
+
+}
+
+header nav li {
+    margin: 10px 15px 0;
+    white-space: nowrap;
+
+}
+
+header nav li a:hover {
+    text-decoration: none;
+    color: #ddd
+}
+
+
+main {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 1vw 4vw 3vw;
+    background-color: #fff;
+    min-height: 85vh;
+}
+
+.fa-arrow-alt-circle-left{
+    font-size:x-large ;
+    
+}

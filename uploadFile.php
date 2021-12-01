@@ -5,8 +5,8 @@
         header('location:loginForm.php');
     }
 
-    $driver = new mysqli_driver();
-    mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
+    // $driver = new mysqli_driver();
+    // mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 
     if (isset($_POST['send'])) {
 
@@ -14,7 +14,8 @@
         $subject = $_POST['sub'];
         $chapter = $_POST['chapter'];
         $branch = $_POST['branch'];
-        $date =  date('M j, Y');
+        $dt = date_default_timezone_set("Asia/Kolkata");
+        $date =  date('M j, Y | h:i a');
         $user = $_SESSION['session_id'];
 
         $status = "";

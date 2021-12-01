@@ -13,6 +13,7 @@ CREATE TABLE `my_notes`.`subject_uploads` (
     `regNumber` VARCHAR(10) NOT NULL ,
     `filePath` VARCHAR(255) NOT NULL ,
     `branchName` VARCHAR(10) NOT NULL,
+    `uploadTimetamp` TIMESTAMP NOT NULL ,
     PRIMARY KEY (`id`)) ENGINE = InnoDB;        
 
 ALTER TABLE `subject_uploads` ADD FOREIGN KEY (`regNumber`) REFERENCES `users`(`regNumber`) ON DELETE CASCADE;
